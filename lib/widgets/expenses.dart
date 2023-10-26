@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trackify/widgets/expenses_list/expenses_list.dart';
+import 'package:trackify/widgets/new_expense.dart';
 
 import '../models/expense.dart';
 
@@ -28,6 +29,13 @@ class _ExpensesState extends State<Expenses> {
     ),
   ];
 
+  void _openAddExpenseOverlay() {
+    showModalBottomSheet(
+      context: context,
+      builder: (ctx) => const NewExpense(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +45,7 @@ class _ExpensesState extends State<Expenses> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: _openAddExpenseOverlay,
             icon: const Icon(
               Icons.add,
             ),
